@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kanban_app/model/model.dart';
 
 class Card_widget extends StatelessWidget {
-  Card_widget({super.key, required this.kanbanModel});
+  Card_widget({
+    super.key,
+    required this.kanbanModel,
+  });
 
   final KanbanModel kanbanModel;
 
@@ -23,6 +26,23 @@ class Card_widget extends StatelessWidget {
               const SizedBox(height: 5),
               Text(
                 "Description: ${kanbanModel.description}",
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.delete),
+                  ),
+                  //TODO: Delete a List
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.assignment_turned_in_outlined))
+                  //TODO: Add to other list
+                ],
               ),
             ],
           ),

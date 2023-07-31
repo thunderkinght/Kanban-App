@@ -14,5 +14,5 @@ class KanbanModel {
   final String id;
   final String title;
   final String description;
-  final Section section;
+  late final Section section;
 }

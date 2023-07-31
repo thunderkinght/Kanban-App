@@ -7,7 +7,6 @@ class Nav_Bar extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,24 +17,31 @@ class Nav_Bar extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                IconButton(onPressed: (){}, icon: const Icon(Icons.add)),  //TODO: Add other Kanban plan
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.add),
+                ),
+                //TODO: Add other Kanban plan
                 const Spacer(),
-                IconButton(onPressed: (){Navigator.pop(context);}, icon: const Icon(Icons.cancel))
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.cancel))
               ],
             ),
           ),
           Expanded(
-              child: ListView.builder(
-                itemCount: doing.length,
-                  itemBuilder: (ctx,index){
-                    return ListTile(
-                      leading: const Icon(Icons.local_post_office),
-                      title: Text(doing[index].title),
-                      onTap: (){},  //TODO: changing to the other kanban plan
-                      selected: true,  //TODO: changing with the variable
-                    );
-                  }
-              ),
+            child: ListView.builder(
+                itemCount: arr.length,
+                itemBuilder: (ctx, index) {
+                  return ListTile(
+                    leading: const Icon(Icons.local_post_office),
+                    title: Text(arr[index].title),
+                    onTap: () {}, //TODO: changing to the other kanban plan
+                    selected: true, //TODO: changing with the variable
+                  );
+                }),
           ),
         ],
       ),

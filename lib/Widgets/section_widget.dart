@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:kanban_app/Screen/new_plan.dart';
 import 'package:kanban_app/Widgets/card_widget.dart';
 import 'package:kanban_app/model/model.dart';
 
-class Section_Widget extends StatefulWidget {
+class Section_Widget extends StatelessWidget {
   const Section_Widget({
     super.key,
     required this.list,
     required this.title,
+    required this.onAdd,
   });
 
-  final title;
+  final String title;
   final List<KanbanModel> list;
+  final void Function() onAdd;
 
-  @override
-  State<Section_Widget> createState() => _Section_WidgetState();
-}
-
-class _Section_WidgetState extends State<Section_Widget> {
-  void addTask() {}
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +31,11 @@ class _Section_WidgetState extends State<Section_Widget> {
                   width: 10,
                 ),
                 Text(
-                  widget.title,
+                  title,
                 ),
                 const Spacer(),
                 IconButton(
-                  onPressed: addTask,
+                  onPressed: onAdd,
                   icon: const Icon(Icons.add),
                 )
               ],
@@ -48,10 +45,10 @@ class _Section_WidgetState extends State<Section_Widget> {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: widget.list.length,
+                  itemCount: list.length,
                   itemBuilder: (ctx, index) {
                     return Card_widget(
-                      kanbanModel: widget.list[index],
+                      kanbanModel: list[index],
                     );
                   }),
             )
